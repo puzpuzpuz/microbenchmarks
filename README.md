@@ -1,6 +1,6 @@
 # microbenchmarks
 
-A collection of various JS microbenchmarks
+A collection of various JS microbenchmarks. I'll be adding new benchmarks here, when needed.
 
 ## UTF String Serialization
 
