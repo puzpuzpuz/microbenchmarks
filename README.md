@@ -2,10 +2,11 @@
 
 A collection of various JS microbenchmarks
 
-## UTF String Deserialization
+## UTF String Serialization
 
-Compares performance of standard API for UTF-8 string deserialization (`Buffer.toString('utf8')`) and a custom JS implementation. Can be run with the following command:
+Compares performance of standard API for UTF-8 string serialization (`Buffer.from(string, 'utf8')`) and deserialization (`Buffer.toString('utf8')`) and custom JS implementations. Can be run with the following commands:
 
 ```
-npm run utf-deserializers
+$ npm run utf-serializers
+$ npm run utf-deserializers
 ```

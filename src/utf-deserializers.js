@@ -77,10 +77,10 @@ sizes.forEach(size => {
 })
 
 suite
-  .on('complete', function () {
-    console.log('Fastest is ' + this.filter('fastest').map('name'))
-  })
   .on('cycle', function (event) {
     console.log(String(event.target))
+  })
+  .on('complete', function () {
+    console.log('Benchmark is complete')
   })
   .run({ 'async': true })
