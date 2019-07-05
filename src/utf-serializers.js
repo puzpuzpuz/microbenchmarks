@@ -23,30 +23,20 @@ const writeUtfCustom = (str) => {
 
 const writeUtfStandard = (str) => Buffer.from(str, 'utf8')
 
-const randomString = (len) => {
-  const charSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-  let res = ''
-  for (let i = 0; i < len; i++) {
-    const pos = Math.floor(Math.random() * charSet.length)
-    res += charSet.substring(pos, pos + 1)
-  }
-  return res
-}
-
 const Benchmark = require('benchmark')
 const suite = new Benchmark.Suite()
 
 const sizes = [1, 10, 100, 1024]
 
 sizes.forEach(size => {
-  const str = randomString(size * 1024)
+  const strAscii = randomString(size * 1024, ASCII_CHARSET)
 
   suite
     .add(`custom UTF-8 serialization for ${size}KB with ASCII chars`, () => {
-      writeUtfCustom(str)
+      writeUtfCustom(strAscii)
     })
     .add(`standard UTF-8 serialization for ${size}KB with ASCII chars`, () => {
-      writeUtfStandard(str)
+      writeUtfStandard(strAscii)
     })
 })
 
