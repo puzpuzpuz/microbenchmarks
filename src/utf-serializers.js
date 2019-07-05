@@ -1,5 +1,7 @@
 'use strict'
 
+const { ASCII_CHARSET, UTF8_CHARSET, randomString } = require('./utils')
+
 const MASK_1BYTE = (1 << 8) - 1
 
 const writeUtfCustom = (str) => {
@@ -30,14 +32,25 @@ const sizes = [1, 10, 100, 1024]
 
 sizes.forEach(size => {
   const strAscii = randomString(size * 1024, ASCII_CHARSET)
+  const strUtf8 = randomString(size * 1024, UTF8_CHARSET)
 
   suite
-    .add(`custom UTF-8 serialization for ${size}KB with ASCII chars`, () => {
-      writeUtfCustom(strAscii)
-    })
-    .add(`standard UTF-8 serialization for ${size}KB with ASCII chars`, () => {
-      writeUtfStandard(strAscii)
-    })
+    .add(
+      `custom UTF-8 serialization for ${size}KB with ASCII chars`,
+      () => writeUtfCustom(strAscii)
+    )
+    .add(
+      `custom UTF-8 serialization for ${size}KB with UTF-8 chars`,
+      () => writeUtfCustom(strUtf8)
+    )
+    .add(
+      `standard UTF-8 serialization for ${size}KB with ASCII chars`,
+      () => writeUtfStandard(strAscii)
+    )
+    .add(
+      `standard UTF-8 serialization for ${size}KB with UTF-8 chars`,
+      () => writeUtfStandard(strUtf8)
+    )
 })
 
 suite

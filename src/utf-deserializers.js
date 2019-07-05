@@ -1,6 +1,6 @@
 'use strict'
 
-const {ASCII_CHARSET, UTF8_CHARSET, randomString} = require('./utils')
+const { ASCII_CHARSET, UTF8_CHARSET, randomString } = require('./utils')
 
 const MASK_1BYTE = (1 << 8) - 1
 
