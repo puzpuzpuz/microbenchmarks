@@ -28,27 +28,27 @@ const writeUtfStandard = (str) => Buffer.from(str, 'utf8')
 const Benchmark = require('benchmark')
 const suite = new Benchmark.Suite()
 
-const sizes = [1, 10, 100, 1024]
+const sizes = [100, 1024, 10240, 102400]
 
 sizes.forEach(size => {
-  const strAscii = randomString(size * 1024, ASCII_CHARSET)
-  const strUtf8 = randomString(size * 1024, UTF8_CHARSET)
+  const strAscii = randomString(size, ASCII_CHARSET)
+  const strUtf8 = randomString(size, UTF8_CHARSET)
 
   suite
     .add(
-      `custom UTF-8 serialization for ${size}KB with ASCII chars`,
+      `custom UTF-8 serialization for ${size}B with ASCII chars`,
       () => writeUtfCustom(strAscii)
     )
     .add(
-      `custom UTF-8 serialization for ${size}KB with UTF-8 chars`,
+      `custom UTF-8 serialization for ${size}B with UTF-8 chars`,
       () => writeUtfCustom(strUtf8)
     )
     .add(
-      `standard UTF-8 serialization for ${size}KB with ASCII chars`,
+      `standard UTF-8 serialization for ${size}B with ASCII chars`,
       () => writeUtfStandard(strAscii)
     )
     .add(
-      `standard UTF-8 serialization for ${size}KB with UTF-8 chars`,
+      `standard UTF-8 serialization for ${size}B with UTF-8 chars`,
       () => writeUtfStandard(strUtf8)
     )
 })

@@ -53,30 +53,30 @@ const readUtfStandard = (buf) => buf.toString('utf8')
 const Benchmark = require('benchmark')
 const suite = new Benchmark.Suite()
 
-const sizes = [1, 10, 100, 1024]
+const sizes = [100, 1024, 10240, 102400]
 
 sizes.forEach(size => {
-  const strAscii = randomString(size * 1024, ASCII_CHARSET)
+  const strAscii = randomString(size, ASCII_CHARSET)
   const bufAscii = Buffer.from(strAscii, 'utf8')
 
-  const strUtf8 = randomString(size * 1024, UTF8_CHARSET)
+  const strUtf8 = randomString(size, UTF8_CHARSET)
   const bufUtf8 = Buffer.from(strUtf8, 'utf8')
 
   suite
     .add(
-      `custom UTF-8 deserialization for ${size}KB with ASCII chars`,
+      `custom UTF-8 deserialization for ${size}B with ASCII chars`,
       () => readUtfCustom(bufAscii, strAscii.length)
     )
     .add(
-      `custom UTF-8 deserialization for ${size}KB with UTF-8 chars`,
+      `custom UTF-8 deserialization for ${size}B with UTF-8 chars`,
       () => readUtfCustom(bufUtf8, strUtf8.length)
     )
     .add(
-      `standard UTF-8 deserialization for ${size}KB with ASCII chars`,
+      `standard UTF-8 deserialization for ${size}B with ASCII chars`,
       () => readUtfStandard(bufAscii)
     )
     .add(
-      `standard UTF-8 deserialization for ${size}KB with UTF-8 chars`,
+      `standard UTF-8 deserialization for ${size}B with UTF-8 chars`,
       () => readUtfStandard(bufUtf8)
     )
 })
