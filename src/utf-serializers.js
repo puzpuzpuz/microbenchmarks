@@ -40,7 +40,7 @@ sizes.forEach(size => {
       () => writeUtfCustom(strAscii)
     )
     .add(
-      `custom UTF-8 serialization for ${size}B with UTF-8 chars`,
+      `custom UTF-8 serialization for ${size}B with non-ASCII chars`,
       () => writeUtfCustom(strUtf8)
     )
     .add(
@@ -48,7 +48,7 @@ sizes.forEach(size => {
       () => writeUtfStandard(strAscii)
     )
     .add(
-      `standard UTF-8 serialization for ${size}B with UTF-8 chars`,
+      `standard UTF-8 serialization for ${size}B with non-ASCII chars`,
       () => writeUtfStandard(strUtf8)
     )
 })

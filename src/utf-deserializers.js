@@ -68,7 +68,7 @@ sizes.forEach(size => {
       () => readUtfCustom(bufAscii, strAscii.length)
     )
     .add(
-      `custom UTF-8 deserialization for ${size}B with UTF-8 chars`,
+      `custom UTF-8 deserialization for ${size}B with non-ASCII chars`,
       () => readUtfCustom(bufUtf8, strUtf8.length)
     )
     .add(
@@ -76,7 +76,7 @@ sizes.forEach(size => {
       () => readUtfStandard(bufAscii)
     )
     .add(
-      `standard UTF-8 deserialization for ${size}B with UTF-8 chars`,
+      `standard UTF-8 deserialization for ${size}B with non-ASCII chars`,
       () => readUtfStandard(bufUtf8)
     )
 })
