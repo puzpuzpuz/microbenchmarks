@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "description": "A collection of various JS microbenchmarks",
   "main": "index.js",
-  "scripts": {
-    "utf-deserializers": "node src/utf-deserializers.js",
-    "utf-serializers": "node src/utf-serializers.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/puzpuzpuz/microbenchmarks.git"
