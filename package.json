@@ -17,11 +17,8 @@
     "url": "https://github.com/puzpuzpuz/microbenchmarks/issues"
   },
   "homepage": "https://github.com/puzpuzpuz/microbenchmarks#readme",
-  "devDependencies": {
-    "standard": "^12.0.1"
-  },
   "dependencies": {
-    "benchmark": "2.1.4",
-    "microtime": "3.0.0"
+    "benchmark": "^2.1.4",
+    "microtime": "^3.0.0"
   }
 }
