@@ -4,7 +4,7 @@ const totalSize = 1000
 const sliceSize = 100
 const source = []
 
-for (let i = 0; i< totalSize; i++) {
+for (let i = 0; i < totalSize; i++) {
   source.push({ num: i })
 }
 
