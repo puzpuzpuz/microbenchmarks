@@ -1,6 +1,6 @@
 'use strict'
 
-const totalSize = 1000
+const totalSize = 100
 const sliceSize = 100
 const source = []
 
