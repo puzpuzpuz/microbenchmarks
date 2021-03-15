@@ -3,7 +3,8 @@
 const OPERATIONS = 1000
 const DICT_KIND_THRESHOLD = (32 << 20) + 1
 
-const plainArr = new Array(1) // HOLEY_SMI_ELEMENTS
+const packedArr = []                           // PACKED_SMI_ELEMENTS
+const holeyArr = new Array(1)                  // HOLEY_SMI_ELEMENTS
 const dictArr = new Array(DICT_KIND_THRESHOLD) // DICTIONARY_ELEMENTS
 
 function pushThenPop(arr) {
@@ -20,8 +21,12 @@ const suite = new Benchmark.Suite()
 
 suite
   .add(
+    'PACKED_SMI_ELEMENTS',
+    () => pushThenPop(packedArr)
+  )
+  .add(
     'HOLEY_SMI_ELEMENTS',
-    () => pushThenPop(plainArr)
+    () => pushThenPop(holeyArr)
   )
   .add(
     'DICTIONARY_ELEMENTS',

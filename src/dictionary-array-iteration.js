@@ -3,11 +3,13 @@
 const ITERATION_SIZE = 1000000
 const DICT_KIND_THRESHOLD = (32 << 20) + 1
 
-const plainArr = new Array(DICT_KIND_THRESHOLD - 1) // HOLEY_SMI_ELEMENTS
+const packedArr = []                           // PACKED_SMI_ELEMENTS
+const holeyArr = new Array(ITERATION_SIZE)     // HOLEY_SMI_ELEMENTS
 const dictArr = new Array(DICT_KIND_THRESHOLD) // DICTIONARY_ELEMENTS
 
 for (let i = 0; i < ITERATION_SIZE; i++) {
-  plainArr[i] = 1
+  packedArr.push(1)
+  holeyArr[i] = 1
   dictArr[i] = 1
 }
 
@@ -24,8 +26,12 @@ const suite = new Benchmark.Suite()
 
 suite
   .add(
+    'PACKED_SMI_ELEMENTS',
+    () => sumArrayItems(packedArr)
+  )  
+  .add(
     'HOLEY_SMI_ELEMENTS',
-    () => sumArrayItems(plainArr)
+    () => sumArrayItems(holeyArr)
   )
   .add(
     'DICTIONARY_ELEMENTS',
